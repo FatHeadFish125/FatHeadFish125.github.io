@@ -47,6 +47,65 @@ s, i, em { font-style: normal; text-decoration: none; }
   display: flex;
   justify-content: space-between;  /* 按水平均匀分布，行首行尾两端靠齐 */
   margin: 0;
+  flex-direction: column;
+  counter-reset: order;  /* 定义CSS计数器 */
+  list-style: none;
+  --normal-color: #666;  /* 普通色 */
+  --active-color: #06e;  /* 高亮色 */
+}
+.steps > li {
+  counter-increment: order;
+  color: var(--normal-color);
+}
+.steps > li::before {
+  content: counter(order);  /* 编号 */
+  display: inline-block;
+  width: 1.4em;
+  line-height: 1.4em;
+  margin-right: .5em;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid;
+  flex-shrink: 0;  /* 布局宽度不够时禁止收缩 */
+}
+  .steps > li {
+  flex: auto;  /* 弹性宽度（根据其内容来调整） */
+  display: inline-flex;  /* 内联块级弹性伸缩盒子 */
+  align-items: center;
+  counter-increment: order;
+}
+.steps > li::after {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  vertical-align: middle;  /* 让引导线和文本垂直居中 */
+  border-bottom: 1px solid #ccc;
+}
+.steps > li:not(:last-child)::after {
+  content: '';
+  flex: 1;  /* 占满 li 中的剩余宽度 */
+  margin: 0 1em;
+  border-bottom: 1px solid #ccc;
+}
+  .steps > li:last-child {
+  flex: none;
+}
+  .steps > li:not(:last-child)::after {
+  border-bottom: 1px solid;  /* 不指定颜色，则自动继承自身color或父级color */
+  opacity: .6;
+}
+.steps > .done,
+.steps > .active {
+  color: var(--active-color);
+}
+.steps > .active::before {
+  color: #fff;
+  background: var(--active-color);
+  border-color: var(--active-color);
+}
+.steps > .active::after {
+  color: var(--normal-color);  /* “进行中”后面的引导线按普通色显示 */
 }
 </style>
 <meta name="applicable-device"content="pc,mobile">
