@@ -20,6 +20,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
     margin-top: 50px;
+    position: relative;
   }
 
   .steps {
@@ -47,13 +48,28 @@
 
   .connector {
     position: absolute;
-    top: 50%;
+    top: 20px;
     left: 50%;
-    height: 100%;
+    height: calc(100% - 40px);
     width: 2px;
     background-color: #ddd;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: -1;
+  }
+
+  .step-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    width: 80%;
+    max-width: 400px;
   }
 </style>
 </head>
@@ -62,12 +78,41 @@
     <h1>结婚证申请流程</h1>
     <ul class="steps">
       <li class="step" onclick="setActive(0)">填写申请表格</li>
+      <li class="step-content">
+        <h2>步骤 1: 填写申请表格</h2>
+        <p>请准备以下资料：</p>
+        <ul>
+          <li>身份证复印件</li>
+          <li>户口簿</li>
+          <li>照片</li>
+        </ul>
+        <p>办理方式：</p>
+        <p>前往当地民政局办理。</p>
+      </li>
       <div class="connector"></div>
+
       <li class="step" onclick="setActive(1)">递交材料</li>
+      <li class="step-content">
+        <h2>步骤 2: 递交材料</h2>
+        <p>将准备好的资料提交给民政局工作人员。</p>
+        <p>工作人员将审核您的材料并告知下一步办理流程。</p>
+      </li>
       <div class="connector"></div>
+
       <li class="step" onclick="setActive(2)">等待审批</li>
+      <li class="step-content">
+        <h2>步骤 3: 等待审批</h2>
+        <p>民政局将对您的申请进行审批。</p>
+        <p>审批通过后，您将收到通知并可以前往领取结婚证。</p>
+      </li>
       <div class="connector"></div>
+
       <li class="step" onclick="setActive(3)">领取结婚证</li>
+      <li class="step-content">
+        <h2>步骤 4: 领取结婚证</h2>
+        <p>前往民政局领取已批准的结婚证。</p>
+        <p>请携带有效身份证明和审批通知。</p>
+      </li>
     </ul>
   </div>
 
@@ -88,6 +133,15 @@
           connector.style.backgroundColor = '#007bff';
         } else {
           connector.style.backgroundColor = '#ddd';
+        }
+      });
+
+      var stepContents = document.querySelectorAll('.step-content');
+      stepContents.forEach(function(content, i) {
+        if (i === index) {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
         }
       });
     }
