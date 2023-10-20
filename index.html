@@ -48,15 +48,14 @@
     background-color: #0056b3;
   }
 
-  .connector {
-    position: absolute;
-    top: -20px; /* 调整连接线位置 */
-    left: 50%;
-    height: calc(100% + 40px); /* 增加连接线高度 */
-    width: 2px;
-    background-color: #ddd;
-    transform: translateX(-50%);
-    z-index: -1;
+  .down-arrow {
+    font-size: 24px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .down-arrow.active {
+    color: #007bff;
   }
 
   .step-content {
@@ -95,6 +94,7 @@
     <h1>结婚证申请流程</h1>
     <ul class="steps">
       <li class="step" onclick="setActive(0)">填写申请表格</li>
+      <div class="down-arrow active" onclick="toggleStep(0)">&#9660;</div>
       <li class="step-content">
         <h2>步骤 1: 填写申请表格</h2>
         <table>
@@ -126,9 +126,9 @@
           </tr>
         </table>
       </li>
-      <div class="connector"></div>
 
       <li class="step" onclick="setActive(1)">递交材料</li>
+      <div class="down-arrow" onclick="toggleStep(1)">&#9660;</div>
       <li class="step-content">
         <h2>步骤 2: 递交材料</h2>
         <table>
@@ -160,9 +160,9 @@
           </tr>
         </table>
       </li>
-      <div class="connector"></div>
 
       <li class="step" onclick="setActive(2)">等待审批</li>
+      <div class="down-arrow" onclick="toggleStep(2)">&#9660;</div>
       <li class="step-content">
         <h2>步骤 3: 等待审批</h2>
         <table>
@@ -188,9 +188,9 @@
           </tr>
         </table>
       </li>
-      <div class="connector"></div>
 
       <li class="step" onclick="setActive(3)">领取结婚证</li>
+      <div class="down-arrow" onclick="toggleStep(3)">&#9660;</div>
       <li class="step-content">
         <h2>步骤 4: 领取结婚证</h2>
         <table>
@@ -221,7 +221,6 @@
           </tr>
         </table>
       </li>
-      <div class="connector"></div>
     </ul>
   </div>
 
@@ -236,12 +235,12 @@
         }
       });
 
-      var connectors = document.querySelectorAll('.connector');
-      connectors.forEach(function(connector, i) {
-        if (i <= index - 1) {
-          connector.style.backgroundColor = '#007bff';
+      var arrows = document.querySelectorAll('.down-arrow');
+      arrows.forEach(function(arrow, i) {
+        if (i < index) {
+          arrow.classList.add('active');
         } else {
-          connector.style.backgroundColor = '#ddd';
+          arrow.classList.remove('active');
         }
       });
 
@@ -251,6 +250,17 @@
           content.style.display = 'block';
         } else {
           content.style.display = 'none';
+        }
+      });
+    }
+
+    function toggleStep(index) {
+      var arrows = document.querySelectorAll('.down-arrow');
+      var isActive = arrows[index].classList.contains('active');
+
+      arrows.forEach(function(arrow, i) {
+        if (i <= index) {
+          arrow.classList.toggle('active', !isActive);
         }
       });
     }
