@@ -29,6 +29,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px; /* 增加上边距 */
+    margin-bottom: 20px; /* 增加下边距 */
   }
 
   .step {
@@ -48,9 +50,9 @@
 
   .connector {
     position: absolute;
-    top: 20px;
+    top: -20px; /* 调整连接线位置 */
     left: 50%;
-    height: calc(100% - 40px);
+    height: calc(100% + 40px); /* 增加连接线高度 */
     width: 2px;
     background-color: #ddd;
     transform: translateX(-50%);
@@ -71,6 +73,21 @@
     width: 80%;
     max-width: 400px;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
 </style>
 </head>
 <body>
@@ -80,39 +97,131 @@
       <li class="step" onclick="setActive(0)">填写申请表格</li>
       <li class="step-content">
         <h2>步骤 1: 填写申请表格</h2>
-        <p>请准备以下资料：</p>
-        <ul>
-          <li>身份证复印件</li>
-          <li>户口簿</li>
-          <li>照片</li>
-        </ul>
-        <p>办理方式：</p>
-        <p>前往当地民政局办理。</p>
+        <table>
+          <tr>
+            <th>办理项目</th>
+            <td>结婚证申请</td>
+          </tr>
+          <tr>
+            <th>需要准备的资料</th>
+            <td>
+              <ul>
+                <li>身份证复印件</li>
+                <li>户口簿</li>
+                <li>照片</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>办理部门</th>
+            <td>当地民政局</td>
+          </tr>
+          <tr>
+            <th>费用</th>
+            <td>免费</td>
+          </tr>
+          <tr>
+            <th>注意事项</th>
+            <td>请提前预约办理时间。</td>
+          </tr>
+        </table>
       </li>
       <div class="connector"></div>
 
       <li class="step" onclick="setActive(1)">递交材料</li>
       <li class="step-content">
         <h2>步骤 2: 递交材料</h2>
-        <p>将准备好的资料提交给民政局工作人员。</p>
-        <p>工作人员将审核您的材料并告知下一步办理流程。</p>
+        <table>
+          <tr>
+            <th>办理项目</th>
+            <td>结婚证申请</td>
+          </tr>
+          <tr>
+            <th>需要准备的资料</th>
+            <td>
+              <ul>
+                <li>填写好的申请表格</li>
+                <li>身份证复印件</li>
+                <li>户口簿原件</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>办理部门</th>
+            <td>当地民政局</td>
+          </tr>
+          <tr>
+            <th>费用</th>
+            <td>无</td>
+          </tr>
+          <tr>
+            <th>注意事项</th>
+            <td>请确认所有材料的真实有效。</td>
+          </tr>
+        </table>
       </li>
       <div class="connector"></div>
 
       <li class="step" onclick="setActive(2)">等待审批</li>
       <li class="step-content">
         <h2>步骤 3: 等待审批</h2>
-        <p>民政局将对您的申请进行审批。</p>
-        <p>审批通过后，您将收到通知并可以前往领取结婚证。</p>
+        <table>
+          <tr>
+            <th>办理项目</th>
+            <td>结婚证申请</td>
+          </tr>
+          <tr>
+            <th>需要准备的资料</th>
+            <td>无</td>
+          </tr>
+          <tr>
+            <th>办理部门</th>
+            <td>当地民政局</td>
+          </tr>
+          <tr>
+            <th>费用</th>
+            <td>无</td>
+          </tr>
+          <tr>
+            <th>注意事项</th>
+            <td>请耐心等待审批结果。</td>
+          </tr>
+        </table>
       </li>
       <div class="connector"></div>
 
       <li class="step" onclick="setActive(3)">领取结婚证</li>
       <li class="step-content">
         <h2>步骤 4: 领取结婚证</h2>
-        <p>前往民政局领取已批准的结婚证。</p>
-        <p>请携带有效身份证明和审批通知。</p>
+        <table>
+          <tr>
+            <th>办理项目</th>
+            <td>结婚证领取</td>
+          </tr>
+          <tr>
+            <th>需要准备的资料</th>
+            <td>
+              <ul>
+                <li>身份证</li>
+                <li>审批通知</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>办理部门</th>
+            <td>当地民政局</td>
+          </tr>
+          <tr>
+            <th>费用</th>
+            <td>无</td>
+          </tr>
+          <tr>
+            <th>注意事项</th>
+            <td>请提前预约领取时间。</td>
+          </tr>
+        </table>
       </li>
+      <div class="connector"></div>
     </ul>
   </div>
 
