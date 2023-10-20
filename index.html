@@ -27,6 +27,7 @@
   }
 
   .step {
+    position: relative;
     background-color: #ddd;
     padding: 10px 20px;
     margin: 5px 0;
@@ -38,14 +39,28 @@
     background-color: #007bff;
     color: #fff;
   }
+
+  .connector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 2px;
+    background-color: #ddd;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <ul class="steps">
       <li class="step" onclick="setActive(0)">步骤 1</li>
+      <div class="connector"></div>
       <li class="step" onclick="setActive(1)">步骤 2</li>
+      <div class="connector"></div>
       <li class="step" onclick="setActive(2)">步骤 3</li>
+      <div class="connector"></div>
       <li class="step" onclick="setActive(3)">步骤 4</li>
     </ul>
   </div>
@@ -54,10 +69,19 @@
     function setActive(index) {
       var steps = document.querySelectorAll('.step');
       steps.forEach(function(step, i) {
-        if (i === index) {
+        if (i <= index) {
           step.classList.add('active');
         } else {
           step.classList.remove('active');
+        }
+      });
+
+      var connectors = document.querySelectorAll('.connector');
+      connectors.forEach(function(connector, i) {
+        if (i <= index - 1) {
+          connector.style.backgroundColor = '#007bff';
+        } else {
+          connector.style.backgroundColor = '#ddd';
         }
       });
     }
