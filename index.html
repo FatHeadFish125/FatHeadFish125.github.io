@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>垂直步骤条</title>
+<title>结婚证申请流程</title>
 <style>
-  body, html {
-    height: 100%;
-    margin: 0;
+  body {
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
   }
 
   .container {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-top: 50px;
   }
 
   .steps {
@@ -28,16 +32,17 @@
 
   .step {
     position: relative;
-    background-color: #ddd;
+    background-color: #007bff;
+    color: #fff;
     padding: 10px 20px;
     margin: 5px 0;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: 5px;
   }
 
   .step.active {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #0056b3;
   }
 
   .connector {
@@ -54,14 +59,15 @@
 </head>
 <body>
   <div class="container">
+    <h1>结婚证申请流程</h1>
     <ul class="steps">
-      <li class="step" onclick="setActive(0)">步骤 1</li>
+      <li class="step" onclick="setActive(0)">填写申请表格</li>
       <div class="connector"></div>
-      <li class="step" onclick="setActive(1)">步骤 2</li>
+      <li class="step" onclick="setActive(1)">递交材料</li>
       <div class="connector"></div>
-      <li class="step" onclick="setActive(2)">步骤 3</li>
+      <li class="step" onclick="setActive(2)">等待审批</li>
       <div class="connector"></div>
-      <li class="step" onclick="setActive(3)">步骤 4</li>
+      <li class="step" onclick="setActive(3)">领取结婚证</li>
     </ul>
   </div>
 
