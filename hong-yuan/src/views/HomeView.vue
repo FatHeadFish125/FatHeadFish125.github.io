@@ -6,7 +6,7 @@ import TheWelcome from '../components/TheWelcome.vue'
   <main>
     <van-cell-group>
       <van-cell title="快乐汉语一" url="/happy1"/>
-      <van-cell title="快乐汉语二" />
+      <van-cell title="快乐汉语二" url="/happy2"/>
     </van-cell-group>
   </main>
 </template>

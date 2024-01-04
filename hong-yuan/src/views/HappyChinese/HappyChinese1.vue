@@ -127,22 +127,31 @@ export default{
 
             ],
             song: '',
-            playing: false
+            playing: false,
+            playItem:{}
         }
     },
     methods: {
         playClick(item){
-            
-            if (this.playing == true) {
-                this.$refs.audio.pause()
-                this.playing = false
+            if(item == this.playItem){
+                if(this.playing == true){
+                    this.$refs.audio.pause()
+                }else{
+                    this.$refs.audio.play()
+                }
+                this.playing = !this.playing
             }else{
+                if (this.playing == true) {
+                    this.$refs.audio.pause()
+                }
+                this.playItem = item
                 let music1 = new Audio();
                 music1 = item.src
                 this.$refs.audio.src = music1;
                 this.$refs.audio.play();
                 this.playing = true
             }
+            
         }
     },
 }
@@ -150,9 +159,11 @@ export default{
 
 <template>
   <main>
-    <audio controls="controls" ref="audio">
-        <source />
-    </audio>
+    <div style="display:flex; flex-direction:row; align-items:center; justify-content:center;">
+        <audio controls="controls" ref="audio">
+            <source />
+        </audio>
+    </div>
     <van-cell-group>
         <van-cell v-for="(item, index) in cd1" :key="index" :title="item.title" @click="playClick(item)" />
     </van-cell-group>

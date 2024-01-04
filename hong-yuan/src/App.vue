@@ -6,7 +6,7 @@ import HomePage from './views/HomePage.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.jpeg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.jpeg" width="100" height="100" />
     <div style="width: 100%;display: flex;flex-direction: row; justify-content: center; align-items: center;">HongYuan Education Center</div>
     <div class="wrapper">
       <!-- <HelloWorld msg="You did it!" /> -->
